@@ -7,5 +7,5 @@ exports.board = function(state, action) {
 };
 
 exports.players = function(state, action) {
-  if (!state) { return {0: null, 1: null}; }
+  if (!state) { return [{id: null}, {id: null}]; }
 };

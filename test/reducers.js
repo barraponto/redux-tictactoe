@@ -12,14 +12,22 @@ describe('Game Start', function(){
     var turn = reducers.turn();
     turn.should.be.a('Number');
     turn.should.equal(0);
-  })
+  });
 
   it('should start with a null board', function(){
     //var board = [null, null, null, null, null, null, null, null, null];
     var board = reducers.board();
     board.should.be.an('Array');
     board.should.have.length(9);
-    board.forEach(function(cell){ should.not.exist(cell); should.equal(cell, null); });
+    board.forEach(function(cell){ should.equal(cell, null); });
+  });
+
+  it('should start with two undefined players', function(){
+    // var players = [{id: null}, {id: null}]
+    var players = reducers.players();
+    players.should.be.an('Array');
+    players.should.have.length(2);
+    players.forEach(function(player){ should.equal(player.id, null); })
   });
 
 });
