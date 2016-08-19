@@ -1,5 +1,6 @@
 var should = require('chai').should();
 var reducers = require('../src/reducers');
+var actions = require('../src/actions');
 
 /**
  * Tictactoe board state
@@ -30,4 +31,14 @@ describe('Game Start', function(){
     players.forEach(function(player){ should.equal(player.id, null); })
   });
 
+});
+
+describe('User joins', function(){
+  it('should allow a user to join the game', function(){
+    var initial = reducers.players();
+    var players = reducers.players(initial, actions.join('hackerman'));
+    players.should.be.an('Array');
+    players.should.have.length(2);
+    players[0].should.deep.equal({id: 'hackerman'});
+  })
 });
