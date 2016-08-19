@@ -1,0 +1,17 @@
+{
+  "name": "redux-tictactoe",
+  "version": "1.0.0",
+  "description": "Redux-based Tictactoe game.",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Capi Etheriel <barraponto@gmail.com> (https://github.com/barraponto)",
+  "license": "GPLv3",
+  "devDependencies": {
+    "mocha": "^3.0.2",
+    "chai": "^3.5.0",
+  },
+  "dependencies": {
+  }
+}
