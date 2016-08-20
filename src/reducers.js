@@ -18,6 +18,10 @@ exports.players = function(state, action) {
         // if there is no open slot, openslot==-1 and index is guaranteed to start at 0...
         return index === openslot ? {id: action.player} : slot;
       });
+    case actions.LEAVE:
+      return state.map(function(slot){
+        return slot.id === action.player ? {id: null} : slot;
+      });
     default:
       return state;
   }
