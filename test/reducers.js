@@ -28,7 +28,7 @@ describe('Game Start', function(){
     var players = reducers.players();
     players.should.be.an('Array');
     players.should.have.length(2);
-    players.forEach(function(player){ should.equal(player.id, null); })
+    players.forEach(function(player){ should.equal(player.id, null); });
   });
 
 });
@@ -40,5 +40,15 @@ describe('User joins', function(){
     players.should.be.an('Array');
     players.should.have.length(2);
     players[0].should.deep.equal({id: 'hackerman'});
-  })
+  });
+
+  it('should not allow a user to join a full game', function(){
+    var initial = reducers.players();
+    var oneplayer = reducers.players(initial, actions.join('hackerman'));
+    var twoplayers = reducers.players(oneplayer, actions.join('barbarianna'));
+    var players = reducers.players(twoplayers, actions.join('triceracops'));
+    players.should.be.an('Array');
+    players.should.have.length(2);
+    should.not.exist(players.find(function(player){ return player.id == 'triceracops'; }));
+  });
 });
