@@ -1,5 +1,6 @@
 var PLAY = exports.PLAY = 'PLAY';
 var JOIN = exports.JOIN = 'JOIN';
+var LEAVE = exports.LEAVE = 'LEAVE';
 
 exports.play = function(playerId, index){
   return {
@@ -12,6 +13,13 @@ exports.play = function(playerId, index){
 exports.join = function(playerId) {
   return {
     type: JOIN,
+    player: playerId
+  };
+};
+
+exports.leave = function(playerId) {
+  return {
+    type: LEAVE,
     player: playerId
   };
 };

@@ -27,4 +27,14 @@ describe('Actions', function(){
     action.player.should.be.a('String');
     action.player.should.equal('hackerman');
   });
+
+  it('should leave hackerman user', function(){
+    // var action = {type: actions.LEAVE, player: 'hackerman'};
+    var action = actions.leave('hackerman');
+    action.should.be.an('Object');
+    action.type.should.be.a('String');
+    action.type.should.equal(actions.LEAVE);
+    action.player.should.be.a('String');
+    action.player.should.equal('hackerman');
+  });
 });
