@@ -31,6 +31,12 @@ describe('Game Start', function(){
     players.forEach(function(player){ should.equal(player.id, null); });
   });
 
+  it('should start with no winner', function(){
+    // var winner = null;
+    var winner = reducers.winner();
+    should.not.exist(winner);
+  });
+
 });
 
 describe('User joins', function(){
@@ -52,7 +58,6 @@ describe('User joins', function(){
     should.not.exist(players.find(function(player){ return player.id === 'triceracops'; }));
   });
 });
-
 
 describe('User leaves', function(){
   it('should allow a user to leave the game', function(){

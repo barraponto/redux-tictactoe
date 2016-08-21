@@ -30,3 +30,7 @@ exports.players = function(state, action) {
       return state;
   }
 };
+
+exports.winner = function(state, action){
+  if (!state) { return null; }
+}
