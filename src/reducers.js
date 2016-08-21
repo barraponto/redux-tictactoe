@@ -1,15 +1,15 @@
 var actions = require('./actions');
 
 exports.turn = function(state, action) {
-  if (!state) { return 0; }
+  if (state === undefined) { return 0; }
 };
 
 exports.board = function(state, action) {
-  if (!state) { return [null, null, null, null, null, null, null, null, null]; }
+  if (state === undefined) { return [null, null, null, null, null, null, null, null, null]; }
 };
 
 exports.players = function(state, action) {
-  if (!state) { return [{id: null}, {id: null}]; }
+  if (state === undefined) { return [{id: null}, {id: null}]; }
   switch (action.type) {
 
     case actions.JOIN:
@@ -32,5 +32,5 @@ exports.players = function(state, action) {
 };
 
 exports.winner = function(state, action){
-  if (!state) { return null; }
-}
+  if (state === undefined) { return null; }
+};
