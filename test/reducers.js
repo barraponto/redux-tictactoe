@@ -62,13 +62,22 @@ describe('User joins', function(){
 describe('User leaves', function(){
   it('should allow a user to leave the game', function(){
     var initial = reducers.players();
-    var oneplayer = reducers.players(initial, actions.join('hackerman'));
-    var twoplayers = reducers.players(oneplayer, actions.join('barbarianna'));
-    var players = reducers.players(twoplayers, actions.leave('hackerman'));
+    var onePlayer = reducers.players(initial, actions.join('hackerman'));
+    var twoPlayers = reducers.players(onePlayer, actions.join('barbarianna'));
+    var players = reducers.players(twoPlayers, actions.leave('hackerman'));
     players.should.be.an('Array');
     players.should.have.length(2);
     players.filter(function(player){ return player.id === 'barbarianna'; }).length.should.equal(1);
     players.filter(function(player){ return player.id === null ; }).length.should.equal(1);
     should.not.exist(players.find(function(player){ return player.id == 'hackerman'; }));
+  });
+});
+
+describe('User plays', function(){
+  it('should update turn counter on every play', function(){
+    var initial = reducers.turn();
+    var firstTurn = reducers.turn(initial, actions.play('hackerman', 0));
+    firstTurn.should.be.a('Number');
+    firstTurn.should.equal(1);
   });
 });

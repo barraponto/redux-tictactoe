@@ -2,6 +2,13 @@ var actions = require('./actions');
 
 exports.turn = function(state, action) {
   if (state === undefined) { return 0; }
+
+  switch (action.type) {
+    case actions.PLAY:
+      return state + 1;
+    default:
+      return state;
+  }
 };
 
 exports.board = function(state, action) {
@@ -10,8 +17,8 @@ exports.board = function(state, action) {
 
 exports.players = function(state, action) {
   if (state === undefined) { return [{id: null}, {id: null}]; }
-  switch (action.type) {
 
+  switch (action.type) {
     case actions.JOIN:
       // get first openslot index.
       var openslot = state.findIndex(function(slot){ return slot.id === null; });
