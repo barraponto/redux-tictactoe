@@ -13,6 +13,14 @@ exports.turn = function(state, action) {
 
 exports.board = function(state, action) {
   if (state === undefined) { return [null, null, null, null, null, null, null, null, null]; }
+
+  switch (action.type) {
+    case actions.PLAY:
+      return state.map(function(cell, index){ return index === action.cell ? action.player : cell; });
+
+    default:
+      return state;
+  }
 };
 
 exports.players = function(state, action) {
