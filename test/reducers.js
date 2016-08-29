@@ -76,7 +76,7 @@ describe('User leaves', function(){
 describe('User plays', function(){
   it('should update turn counter on every play', function(){
     var initial = reducers.turn();
-    var firstTurn = reducers.turn(initial, actions.play('hackerman', 0));
+    var firstTurn = reducers.turn(initial, actions.play(0, 0));
     firstTurn.should.be.a('Number');
     firstTurn.should.equal(1);
   });
