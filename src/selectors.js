@@ -1,3 +1,3 @@
-function player(state) {
-  return state.players[state.turn % state.players.length];
-}
+exports.player = function player(state) {
+  return state.turn % state.players.length;
+};
