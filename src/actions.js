@@ -2,11 +2,11 @@ var PLAY = exports.PLAY = 'PLAY';
 var JOIN = exports.JOIN = 'JOIN';
 var LEAVE = exports.LEAVE = 'LEAVE';
 
-exports.play = function(playerId, index){
+exports.play = function(playerIndex, cellIndex){
   return {
     type: PLAY,
-    player: playerId,
-    cell: index
+    player: playerIndex,
+    cell: cellIndex
   };
 };
 

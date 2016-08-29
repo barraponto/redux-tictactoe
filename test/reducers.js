@@ -80,4 +80,13 @@ describe('User plays', function(){
     firstTurn.should.be.a('Number');
     firstTurn.should.equal(1);
   });
+
+  it('should update the board on every play', function(){
+    var initial = reducers.board();
+    var firstMove = reducers.board(initial, actions.play(0, 0));
+    firstMove.should.be.an('Array');
+    firstMove.should.have.length(9);
+    firstMove[0].should.be.a('Number');
+    firstMove[0].should.equal(0)
+  });
 });
