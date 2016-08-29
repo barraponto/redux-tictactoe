@@ -2,6 +2,6 @@ var redux = require('redux');
 var reducers = require('./reducers');
 
 
-exports.create = function(){
-  return redux.createStore(redux.combineReducers(reducers));
+exports.create = function(state){
+  return redux.createStore(redux.combineReducers(reducers), state);
 };
