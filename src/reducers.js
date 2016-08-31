@@ -16,7 +16,7 @@ exports.board = function(state, action) {
 
   switch (action.type) {
     case actions.PLAY:
-      return state.map(function(cell, index){ return index === action.cell ? action.player : cell; });
+      return state.map(function(cell, index){ return index === action.payload.cell ? action.payload.player : cell; });
 
     default:
       return state;
@@ -33,12 +33,12 @@ exports.players = function(state, action) {
       if (openslot === -1) { return state; }
 
       return state.map(function(slot, index){
-        return index === openslot ? {id: action.player} : slot;
+        return index === openslot ? {id: action.payload.player} : slot;
       });
 
     case actions.LEAVE:
       return state.map(function(slot){
-        return slot.id === action.player ? {id: null} : slot;
+        return slot.id === action.payload.player ? {id: null} : slot;
       });
 
     default:

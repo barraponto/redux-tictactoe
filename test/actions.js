@@ -12,10 +12,11 @@ describe('Actions', function(){
     action.should.be.an('Object');
     action.type.should.be.a('String');
     action.type.should.equal(actions.PLAY);
-    action.player.should.be.a('Number');
-    action.player.should.equal(0);
-    action.cell.should.be.a('Number');
-    action.cell.should.equal(0);
+    action.payload.should.be.an('Object');
+    action.payload.player.should.be.a('Number');
+    action.payload.player.should.equal(0);
+    action.payload.cell.should.be.a('Number');
+    action.payload.cell.should.equal(0);
   });
 
   it('should join hackerman user', function(){
@@ -24,8 +25,9 @@ describe('Actions', function(){
     action.should.be.an('Object');
     action.type.should.be.a('String');
     action.type.should.equal(actions.JOIN);
-    action.player.should.be.a('String');
-    action.player.should.equal('hackerman');
+    action.payload.should.be.an('Object');
+    action.payload.player.should.be.a('String');
+    action.payload.player.should.equal('hackerman');
   });
 
   it('should leave hackerman user', function(){
@@ -34,7 +36,8 @@ describe('Actions', function(){
     action.should.be.an('Object');
     action.type.should.be.a('String');
     action.type.should.equal(actions.LEAVE);
-    action.player.should.be.a('String');
-    action.player.should.equal('hackerman');
+    action.payload.should.be.an('Object');
+    action.payload.player.should.be.a('String');
+    action.payload.player.should.equal('hackerman');
   });
 });
