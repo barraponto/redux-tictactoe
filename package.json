@@ -10,8 +10,10 @@
   "license": "GPLv3",
   "devDependencies": {
     "mocha": "^3.0.2",
-    "chai": "^3.5.0",
+    "chai": "^3.5.0"
   },
   "dependencies": {
+    "redux": "^3.5.2",
+    "redux-actions": "^0.12.0"
   }
 }

@@ -1,31 +1,17 @@
+var createAction = require('redux-actions').createAction;
+
 var PLAY = exports.PLAY = 'PLAY';
 var JOIN = exports.JOIN = 'JOIN';
 var LEAVE = exports.LEAVE = 'LEAVE';
 
-exports.play = function(playerIndex, cellIndex){
-  return {
-    type: PLAY,
-    payload: {
-      player: playerIndex,
-      cell: cellIndex
-    }
-  };
-};
+exports.play = createAction(PLAY, function(playerIndex, cellIndex){
+  return {player: playerIndex, cell: cellIndex};
+});
 
-exports.join = function(playerId) {
-  return {
-    type: JOIN,
-    payload: {
-      player: playerId
-    }
-  };
-};
+exports.join = createAction(JOIN, function(playerId){
+  return {player: playerId};
+});
 
-exports.leave = function(playerId) {
-  return {
-    type: LEAVE,
-    payload: {
-      player: playerId
-    }
-  };
-};
+exports.leave = createAction(LEAVE, function(playerId){
+  return {player: playerId};
+});
