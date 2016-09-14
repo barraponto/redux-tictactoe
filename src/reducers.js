@@ -1,4 +1,5 @@
 var actions = require('./actions');
+var selectors = require('./selectors');
 
 exports.turn = function(state, action) {
   if (state === undefined) { return 0; }
@@ -12,12 +13,13 @@ exports.turn = function(state, action) {
 };
 
 exports.board = function(state, action) {
-  if (state === undefined) { return [null, null, null, null, null, null, null, null, null]; }
+  if (state === undefined) { return Array(9).fill(null); }
 
   switch (action.type) {
     case actions.PLAY:
-      return state.map(function(cell, index){ return index === action.payload.cell ? action.payload.player : cell; });
-
+      return state.map(function(cell, index){
+        return index === action.payload.cell ? action.payload.player : cell;
+      });
     default:
       return state;
   }
@@ -41,14 +43,6 @@ exports.players = function(state, action) {
         return slot.id === action.payload.player ? {id: null} : slot;
       });
 
-    default:
-      return state;
-  }
-};
-
-exports.winner = function(state, action){
-  if (state === undefined) { return null; }
-  switch (action.type) {
     default:
       return state;
   }
