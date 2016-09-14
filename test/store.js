@@ -7,8 +7,7 @@ describe('Store', function(){
     var expected = {
       turn: 0,
       board: [ null, null, null, null, null, null, null, null, null ],
-      players: [ { id: null }, { id: null } ],
-      winner: null
+      players: [ { id: null }, { id: null } ]
     };
     var store = Store.create();
     var state = store.getState();
@@ -19,8 +18,7 @@ describe('Store', function(){
     var expected = {
         turn: 1,
         board: [ 0, null, null, null, null, null, null, null, null ],
-        players: [ { id: null }, { id: null } ],
-        winner: null
+        players: [ { id: null }, { id: null } ]
     };
 
     var store = Store.create();
@@ -31,8 +29,7 @@ describe('Store', function(){
     var nextExpected = {
         turn: 2,
         board: [ 0, 1, null, null, null, null, null, null, null ],
-        players: [ { id: null }, { id: null } ],
-        winner: null
+        players: [ { id: null }, { id: null } ]
     };
     store.dispatch(actions.play(1, 1));
     var nextState = store.getState();

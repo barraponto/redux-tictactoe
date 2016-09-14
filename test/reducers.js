@@ -30,13 +30,6 @@ describe('Game Start', function(){
     players.should.have.length(2);
     players.forEach(function(player){ should.equal(player.id, null); });
   });
-
-  it('should start with no winner', function(){
-    // var winner = null;
-    var winner = reducers.winner();
-    should.not.exist(winner);
-  });
-
 });
 
 describe('User joins', function(){
