@@ -1,49 +1,44 @@
+var handleAction = require('redux-actions').handleAction;
+var handleActions = require('redux-actions').handleActions;
 var actions = require('./actions');
-var selectors = require('./selectors');
 
-exports.turn = function(state, action) {
-  if (state === undefined) { return 0; }
+exports.turn = handleAction(
+  actions.play,
+  function(state, action){ return state + 1; },
+  0
+);
 
-  switch (action.type) {
-    case actions.PLAY:
-      return state + 1;
-    default:
-      return state;
-  }
+exports.board = handleAction(
+  actions.play,
+  function(state, action){
+    return state.map(function(cell, index){
+      return index === action.payload.cell ? action.payload.player : cell;
+    });
+  },
+  Array(9).fill(null)
+);
+
+var playerReducers = {};
+playerReducers[actions.join] = function(state, action){
+  var openslot = state.findIndex(function(slot){
+    return slot.id === null;
+  });
+  if (openslot === -1) { return state; }
+  return state.map(function(slot, index){
+    return index === openslot ? {id: action.payload.player} : slot;
+  });
+};
+playerReducers[actions.leave] = function(state, action) {
+  var playerslot = state.findIndex(function(slot){
+    return slot.id === action.payload.player;
+  });
+
+  return state.map(function(slot, index){
+    return index === playerslot ? {id: null} : slot;
+  });
 };
 
-exports.board = function(state, action) {
-  if (state === undefined) { return Array(9).fill(null); }
-
-  switch (action.type) {
-    case actions.PLAY:
-      return state.map(function(cell, index){
-        return index === action.payload.cell ? action.payload.player : cell;
-      });
-    default:
-      return state;
-  }
-};
-
-exports.players = function(state, action) {
-  if (state === undefined) { return [{id: null}, {id: null}]; }
-
-  switch (action.type) {
-    case actions.JOIN:
-      // get first openslot index.
-      var openslot = state.findIndex(function(slot){ return slot.id === null; });
-      if (openslot === -1) { return state; }
-
-      return state.map(function(slot, index){
-        return index === openslot ? {id: action.payload.player} : slot;
-      });
-
-    case actions.LEAVE:
-      return state.map(function(slot){
-        return slot.id === action.payload.player ? {id: null} : slot;
-      });
-
-    default:
-      return state;
-  }
-};
+exports.players = handleActions(
+  playerReducers,
+  [{id: null}, {id: null}]
+);

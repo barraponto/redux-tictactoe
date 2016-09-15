@@ -1,4 +1,5 @@
 var should = require('chai').should();
+var testAction = require('./utils').testAction;
 var Store = require('../src/store');
 var reducers = require('../src/reducers');
 var selectors = require('../src/selectors');
@@ -20,7 +21,7 @@ describe('Selectors', function(){
   });
 
   it('should present the winner if any', function(){
-    var winner = selectors.winner(reducers.board());
+    var winner = selectors.winner(reducers.board(undefined, testAction()));
     should.not.exist(winner);
 
     var board = [1, 1, 1, 0, 0, null, 0, null, null];
