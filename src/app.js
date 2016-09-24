@@ -1,1 +1,3 @@
-var store = require('./store.js');
+var store = require("./store.js");
+
+module.exports = store;
