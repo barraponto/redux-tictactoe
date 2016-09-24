@@ -12,13 +12,13 @@ var lines = [
 ];
 
 exports.winner = function player(board) {
-    var winner = null;
-    // @TODO: early exit if we find a winner
-    lines.forEach((indexes) => {
-        var cells = indexes.map((index) => board[index]);
-        if (cells.every((cell) => cell === cells[0])) {
-            winner = board[indexes[0]];
-        }
-    });
-    return winner;
+  var winner = null;
+  // @TODO: early exit if we find a winner
+  lines.forEach((indexes) => {
+    var cells = indexes.map((index) => board[index]);
+    if (cells.every((cell) => cell === cells[0])) {
+      winner = board[indexes[0]];
+    }
+  });
+  return winner;
 };

@@ -1,6 +1,6 @@
-var handleAction = require('redux-actions').handleAction;
-var handleActions = require('redux-actions').handleActions;
-var actions = require('./actions');
+var handleAction = require("redux-actions").handleAction;
+var handleActions = require("redux-actions").handleActions;
+var actions = require("./actions");
 
 exports.turn = handleAction(
   actions.play,
@@ -16,15 +16,16 @@ exports.board = handleAction(
   Array(9).fill(null)
 );
 
-var playerReducers = {};
-playerReducers[actions.join] = (state, action) => {
-  var openslot = state.findIndex((slot) => slot.id === null);
-  if (openslot === -1) { return state; }
-  return state.map((slot, index) => (index === openslot) ? {id: action.payload.player} : slot);
-};
-playerReducers[actions.leave] = (state, action) => {
-  var playerSlot = state.findIndex((slot) => slot.id === action.payload.player);
-  return state.map((slot, index) => (index === playerSlot) ? {id: null} : slot);
+var playerReducers = {
+  [actions.join]: (state, action) => {
+    var openslot = state.findIndex((slot) => slot.id === null);
+    if (openslot === -1) { return state; }
+    return state.map((slot, index) => (index === openslot) ? {id: action.payload.player} : slot);
+  },
+  [actions.leave]: (state, action) => {
+    var playerSlot = state.findIndex((slot) => slot.id === action.payload.player);
+    return state.map((slot, index) => (index === playerSlot) ? {id: null} : slot);
+  }
 };
 
 exports.players = handleActions(
