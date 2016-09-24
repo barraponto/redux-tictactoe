@@ -1,5 +1,5 @@
 {
-  "name": "redux-tictactoe",
+  "name": "gamux-tictactoe",
   "version": "1.0.0",
   "description": "Redux-based Tictactoe game.",
   "main": "src/app.js",
