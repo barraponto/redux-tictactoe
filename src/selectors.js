@@ -1,6 +1,6 @@
 exports.player = (state) => state.turn % state.players.length;
 
-var lines = [
+const lines = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -12,10 +12,10 @@ var lines = [
 ];
 
 exports.winner = function player(board) {
-    var winner = null;
+    let winner = null;
     // @TODO: early exit if we find a winner
     lines.forEach((indexes) => {
-        var cells = indexes.map((index) => board[index]);
+        const cells = indexes.map((index) => board[index]);
         if (cells.every((cell) => cell === cells[0])) {
             winner = board[indexes[0]];
         }

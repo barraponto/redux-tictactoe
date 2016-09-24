@@ -1,8 +1,8 @@
 var createAction = require("redux-actions").createAction;
 
-var PLAY = exports.PLAY = "PLAY";
-var JOIN = exports.JOIN = "JOIN";
-var LEAVE = exports.LEAVE = "LEAVE";
+const PLAY = exports.PLAY = "PLAY";
+const JOIN = exports.JOIN = "JOIN";
+const LEAVE = exports.LEAVE = "LEAVE";
 
 exports.play = createAction(PLAY,
     (playerIndex, cellIndex) => ({player: playerIndex, cell: cellIndex}));
