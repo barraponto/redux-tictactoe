@@ -1,1 +1,1 @@
-console.log('hello world');
+var store = require('./store.js');

@@ -2,13 +2,16 @@
   "name": "gamux-tictactoe",
   "version": "1.0.0",
   "description": "Redux-based Tictactoe game.",
-  "main": "src/app.js",
+  "main": "lib/gamux-tictactoe.js",
   "scripts": {
+    "build": "webpack",
     "test": "mocha"
   },
   "author": "Capi Etheriel <barraponto@gmail.com> (https://github.com/barraponto)",
   "license": "GPLv3",
   "devDependencies": {
+    "webpack": "^1.13.2",
+    "webpack-node-externals": "^1.4.3",
     "mocha": "^3.0.2",
     "chai": "^3.5.0"
   },
