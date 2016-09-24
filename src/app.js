@@ -1,3 +1,3 @@
-var store = require("./store.js");
+import {store} from "./store";
 
 module.exports = store;

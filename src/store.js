@@ -1,5 +1,5 @@
-var redux = require("redux");
-var reducers = require("./reducers");
+import {combineReducers, createStore} from "redux";
+import * as reducers from "./reducers";
 
 exports.create = (state) =>
-    redux.createStore(redux.combineReducers(reducers), state);
+    createStore(combineReducers(reducers), state);

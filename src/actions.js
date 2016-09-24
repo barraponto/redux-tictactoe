@@ -1,4 +1,4 @@
-var createAction = require("redux-actions").createAction;
+import {createAction} from "redux-actions";
 
 const PLAY = exports.PLAY = "PLAY";
 const JOIN = exports.JOIN = "JOIN";

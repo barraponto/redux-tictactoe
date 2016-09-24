@@ -5,7 +5,7 @@
   "main": "lib/gamux-tictactoe.js",
   "scripts": {
     "build": "webpack",
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "author": "Capi Etheriel <barraponto@gmail.com> (https://github.com/barraponto)",
   "license": "GPLv3",

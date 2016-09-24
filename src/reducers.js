@@ -1,6 +1,5 @@
-var handleAction = require("redux-actions").handleAction;
-var handleActions = require("redux-actions").handleActions;
-var actions = require("./actions");
+import {handleAction, handleActions} from "redux-actions";
+import * as actions from "./actions";
 
 exports.turn = handleAction(
     actions.play,
