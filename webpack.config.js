@@ -1,5 +1,5 @@
-var path = require('path');
-var nodeExternals = require('webpack-node-externals');
+var path = require("path");
+var nodeExternals = require("webpack-node-externals");
 
 module.exports = {
     entry: "./src/app.js",
@@ -8,6 +8,12 @@ module.exports = {
         filename: "gamux-tictactoe.js"
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loader: "eslint-loader"
+            }
+        ],
         loaders: [
             {
                 test: /\.js$/,
@@ -19,5 +25,10 @@ module.exports = {
         ]
     },
     target: "node",
-    externals: [nodeExternals()]
+    externals: [nodeExternals()],
+    eslint: {
+        configFile: path.join(__dirname, ".eslintrc.json"),
+        failOnWarning: true,
+        failOnError: true
+    }
 };
