@@ -1,6 +1,4 @@
-exports.player = function player(state) {
-  return state.turn % state.players.length;
-};
+exports.player = (state) => state.turn % state.players.length;
 
 var lines = [
   [0, 1, 2],
@@ -14,12 +12,13 @@ var lines = [
 ];
 
 exports.winner = function player(board) {
-  var winner = null;
-  lines.forEach(function(indexes) {
-    if (indexes.map(function(index){ return board[index]; })
-               .every(function(cell, _, cells){ return cell === cells[0]; })) {
-      winner = board[indexes[0]];
-    }
-  });
-  return winner;
+    var winner = null;
+    // @TODO: early exit if we find a winner
+    lines.forEach((indexes) => {
+        var cells = indexes.map((index) => board[index]);
+        if (cells.every((cell) => cell === cells[0])) {
+            winner = board[indexes[0]];
+        }
+    });
+    return winner;
 };
