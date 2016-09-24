@@ -11,7 +11,8 @@ exports.turn = handleAction(
 exports.board = handleAction(
     actions.play,
     (state, action) => state.map(
-        (cell, index) => (index === action.payload.cell) ? action.payload.player : cell
+        (cell, index) =>
+            (index === action.payload.cell) ? action.payload.player : cell
     ),
     Array(9).fill(null)
 );
@@ -20,11 +21,14 @@ var playerReducers = {
     [actions.join]: (state, action) => {
         var openslot = state.findIndex((slot) => slot.id === null);
         if (openslot === -1) { return state; }
-        return state.map((slot, index) => (index === openslot) ? {id: action.payload.player} : slot);
+        return state.map((slot, index) =>
+                (index === openslot) ? {id: action.payload.player} : slot);
     },
     [actions.leave]: (state, action) => {
-        var playerSlot = state.findIndex((slot) => slot.id === action.payload.player);
-        return state.map((slot, index) => (index === playerSlot) ? {id: null} : slot);
+        var playerSlot = state.findIndex(
+            (slot) => slot.id === action.payload.player);
+        return state.map(
+            (slot, index) => (index === playerSlot) ? {id: null} : slot);
     }
 };
 
